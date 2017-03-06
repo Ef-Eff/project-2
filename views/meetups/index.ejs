@@ -1,0 +1,11 @@
+<h1>Meetups</h1>
+
+<% meetups.forEach((meetup) => { %>
+  <p><%= meetup.name %></p>
+  <p><%= meetup.description %></p>
+  <p><%= meetup.requirements %></p>
+  <p><%= meetup.food %></p>
+  <p><%= meetup.location %></p>
+  <p><%= meetup.createdAt %></p>
+  <image src="<%= meetup.image %>">
+<% }) %>

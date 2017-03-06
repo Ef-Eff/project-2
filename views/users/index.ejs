@@ -1,0 +1,6 @@
+<h1>User Show Page</h1>
+<% users.forEach((user) => { %>
+  <p><%= user.username %></p>
+  <p><%= user.email %></p>
+  <a href="/users/<%= user.id %>"><image src="<%= user.profilePic %>"></a>
+<% }) %>

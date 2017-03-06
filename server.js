@@ -60,4 +60,4 @@ app.use(routes);
 // set up our error handler - our LAST piece of middleware
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`HADOOOOOOOOOOOOKEN on port ${port}`));
+app.listen(port, () => console.log(`The Bogs watch over you on port ${port}`));
