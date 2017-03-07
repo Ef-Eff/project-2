@@ -5,7 +5,6 @@ const meetups = require('../controllers/meetups');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
-
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/register')
@@ -29,7 +28,13 @@ router.route('/users/:id')
   .get(users.show);
 
 router.route('/meetups')
-  .get(meetups.index);
+  .get(secureRoute, meetups.index);
+
+router.route('/meetups/:id')
+  .get(secureRoute, meetups.show);
+
+router.route('/meetups/:id/book')
+  .post(meetups.createBooking);
 
 router.all('*', (req, res) => res.notFound());
 

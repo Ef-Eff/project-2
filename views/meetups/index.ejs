@@ -7,5 +7,5 @@
   <p><%= meetup.food %></p>
   <p><%= meetup.location %></p>
   <p><%= meetup.createdAt %></p>
-  <image src="<%= meetup.image %>">
+  <a href="/meetups/<%= meetup.id %>"><image src="<%= meetup.image %>"></a>
 <% }) %>

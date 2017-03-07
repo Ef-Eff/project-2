@@ -4,4 +4,11 @@
 <p><%= meetup.food %></p>
 <p><%= meetup.location %></p>
 <p><%= meetup.createdAt %></p>
+<p><%= meetup.host.username %></p>
 <image src="<%= meetup.image %>">
+
+
+  <form method="POST" action="/meetups/<%= meetup.id %>/book">
+    <input type="hidden" name="<%= meetup.host %>">
+    <button>Book</button>
+  </form>

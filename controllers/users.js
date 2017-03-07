@@ -10,7 +10,10 @@ function indexRoute(req, res, next ) {
 }
 
 function profileRoute(req, res) {
-  res.render('users/profile');
+  User.populate(req.user, [{ path: 'bookings' }, { path: 'meetups'}])
+    .then((user) => {
+      res.render('users/profile', { user });
+    });
 }
 
 function showRoute(req, res, next) {

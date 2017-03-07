@@ -44,7 +44,7 @@ User
         location: 'Moms Basement'
       }]);
   })
-  .then((meetups) => console.log(`${meetups.length} meetups akwardly put together!`))
+  .then((meetups) => console.log(`${meetups.length} meetups akwardly put together! Meetup 1 is made by ${meetups[0].host.username}`))
   .catch((err) => {
     console.log(err);
   })

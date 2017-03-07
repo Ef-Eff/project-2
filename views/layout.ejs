@@ -3,22 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>project-2</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <% include ./partials/stylesheets %>
   </head>
   <body>
-    <a href="/">ayy</a>
-    <a href="/login">login</a>
-    <a href="/register">register</a>
-    <a href="/logout">logout</a>
-    <a href="/users">users</a>
-    <a href="/profile">profile</a>
-    <a href="/meetups">meetups</a>
-    <% for(const type in messages) { %>
-      <div class="<%= type %>">
-        <h5><%= messages[type] %></h5>
-      </div>
-    <% } %>
-    <main>
+    <% include ./partials/navbar %>
+    <main class="container">
+      <% for(const type in messages) { %>
+        <div class="<%= type %>">
+          <h5><%= messages[type] %></h5>
+        </div>
+      <% } %>
       <%- body %>
       <% include ./partials/scripts %>
     </main>
