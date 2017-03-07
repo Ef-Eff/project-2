@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String },
   password: { type: String },
   profilePic: { type: String, default: 'https://static.turbosquid.com/Preview/2014/08/01__19_40_10/Wood%20-%20by%20Lucas.png77300256-c8d9-40cf-917b-8494340e41f0Larger.jpg'},
-  meetups: [{ type: mongoose.Schema.ObjectId, ref: 'Meetup' }],
-  bookings: [{ type: mongoose.Schema.ObjectId, ref: 'Booking' }],// required = validation.
-  requests: [{ type: mongoose.Schema.ObjectId, ref: 'Booking' }]// required = validation.
+  location: { type: String },
+  lat: { type: String },
+  lng: { type: String }
 });
 
 userSchema // Virtual so we do not store it in a database, it is a new parameter in the model

@@ -1,0 +1,33 @@
+<h1>Edit Event</h1>
+<hr>
+<form method="POST" action="/meetups/<%= meetup.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Name" class="form-control" required value="<%= meetup.name %>">
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" class="form-control" value="<%= meetup.image  %>">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" class="form-control" required value="<%= meetup.description %>">
+  </div>
+  <div class="form-group">
+    <label for="food">Food</label>
+    <input type="text" name="food" id="food" class="form-control" value="<%= meetup.food  %>">
+  </div>
+  <div class="form-group">
+    <label for="requirements">Requirements</label>
+    <input type="text" name="requirements" id="requirements" class="form-control" value="<%= meetup.requirements %>">
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" class="form-control">
+  </div>
+  <div id="map">what the fuck</div>
+  <input type="hidden" name="lat" value="<%= meetup.lat %>">
+  <input type="hidden" name="lng" value="<%= meetup.lng %>">
+  <button class="btn btn-primary">Create</button>
+</form>

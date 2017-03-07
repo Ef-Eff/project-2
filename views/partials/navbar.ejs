@@ -2,35 +2,32 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#"><% if(locals.user) { %>
-    <img src="<%= locals.user.profilePic %>" width="80" height="auto" class="d-inline-block align-top" style="border-radius:40%;" alt="User">
+  <a class="navbar-brand" href="/profile"><% if(locals.user) { %>
+    <img src="<%= locals.user.profilePic %>" width="80" height="auto" class="d-inline-block align-top" style="border-radius:100%;" alt="User">
   <% }%></a>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">ayy <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login">login</a>
+        <a class="nav-link" href="/register">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/register">register</a>
+        <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profile">profile</a>
+        <a class="nav-link" href="/users">Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/users">users</a>
+        <a class="nav-link" href="/meetups">Meetups</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/meetups">meetups</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logout">logout</a>
+        <a class="nav-link" href="/meetups/new">Create Meetup</a>
       </li>
     </ul>
-    <span class="navbar-text">
-      Navbar text with an inline element
-    </span>
   </div>
 </nav>

@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Meetup = require('../models/meetup');
+const Promise = require('bluebird');
 
 function indexRoute(req, res, next ) {
 
@@ -9,11 +11,16 @@ function indexRoute(req, res, next ) {
     .catch(next);
 }
 
-function profileRoute(req, res) {
-  User.populate(req.user, [{ path: 'bookings' }, { path: 'meetups'}])
-    .then((user) => {
-      res.render('users/profile', { user });
-    });
+function profileRoute(req, res, next) {
+
+  Promise.props({
+    hosting: Meetup.find({ host: req.user.id }).exec(),
+    attending: Meetup.find({ attendees: req.user.id }).exec()
+  })
+  .then((result) => {
+    res.render('users/profile', result);
+  })
+  .catch(next);
 }
 
 function showRoute(req, res, next) {

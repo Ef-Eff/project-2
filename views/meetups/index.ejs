@@ -1,11 +1,14 @@
 <h1>Meetups</h1>
-
-<% meetups.forEach((meetup) => { %>
-  <p><%= meetup.name %></p>
-  <p><%= meetup.description %></p>
-  <p><%= meetup.requirements %></p>
-  <p><%= meetup.food %></p>
-  <p><%= meetup.location %></p>
-  <p><%= meetup.createdAt %></p>
-  <a href="/meetups/<%= meetup.id %>"><image src="<%= meetup.image %>"></a>
-<% }) %>
+<div class="row">
+  <% meetups.forEach((meetup) => { %>
+    <div class="col-md-6">
+      <p><%= meetup.name %></p>
+      <p><%= meetup.description %></p>
+      <p><%= meetup.requirements %></p>
+      <p><%= meetup.food %></p>
+      <p><%= meetup.location %></p>
+      <p><%= meetup.createdAt %></p>
+      <a href="/meetups/<%= meetup.id %>"><image src="<%= meetup.image %>" class="img-fluid metupImg"></a>
+    </div>
+  <% }) %>
+</div>

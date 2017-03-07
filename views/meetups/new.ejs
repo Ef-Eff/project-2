@@ -1,0 +1,32 @@
+<h1>New Event</h1>
+<hr>
+<form method="POST" action="/meetups">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Dank Memes & Dreams" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="food">Food</label>
+    <input type="text" name="food" id="food" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="requirements">Requirements</label>
+    <input type="text" name="requirements" id="requirements" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="input">Location</label>
+    <input type="text" name="location" id="input" class="form-control">
+  </div>
+  <div id="map">what the fuck</div>
+  <input type="hidden" name="lat" value="">
+  <input type="hidden" name="lng" value="">
+  <button class="btn btn-primary">Create</button>
+</form>

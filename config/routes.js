@@ -22,19 +22,29 @@ router.route('/profile')
   .get(secureRoute, users.profile);
 
 router.route('/users')
-  .get(users.index);
+  .get(secureRoute, users.index);
 
 router.route('/users/:id')
-  .get(users.show);
+  .get(secureRoute, users.show);
 
 router.route('/meetups')
-  .get(secureRoute, meetups.index);
+  .get(secureRoute, meetups.index)
+  .post(meetups.create);
+
+router.route('/meetups/new')
+  .get(secureRoute, meetups.new);
 
 router.route('/meetups/:id')
-  .get(secureRoute, meetups.show);
+  .get(secureRoute, meetups.show)
+  .put(meetups.update)
+  .delete(meetups.delete);
 
-router.route('/meetups/:id/book')
-  .post(meetups.createBooking);
+router.route('/meetups/:id/edit')
+  .get(secureRoute, meetups.edit);
+
+router.route('/meetups/:id/attend')
+  .post(meetups.attend);
+
 
 router.all('*', (req, res) => res.notFound());
 

@@ -1,14 +1,24 @@
-<p><%= meetup.name %></p>
-<p><%= meetup.description %></p>
-<p><%= meetup.requirements %></p>
-<p><%= meetup.food %></p>
-<p><%= meetup.location %></p>
-<p><%= meetup.createdAt %></p>
-<p><%= meetup.host.username %></p>
-<image src="<%= meetup.image %>">
-
-
-  <form method="POST" action="/meetups/<%= meetup.id %>/book">
-    <input type="hidden" name="<%= meetup.host %>">
-    <button>Book</button>
+<% if(locals.user.id === meetup.host.id) { %>
+  <a class="btn btn-primary" href="/meetups/<%= meetup.id %>/edit">Edit</a>
+  <form method="POST" action="/meetups/<%= meetup.id %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger">Delete</button>
   </form>
+<% } else { %>
+  <form method="POST" action="/meetups/<%= meetup.id %>/attend">
+    <button class="btn btn-success">Attend</button>
+  </form>
+<% } %>
+<img src="<%= meetup.image %>" class="img-fluid">
+<p><%= meetup.name %></p>
+<p>Description: <%= meetup.description %></p>
+<p>Requirements: <%= meetup.requirements %></p>
+<p>Food: <%= meetup.food %></p>
+<p>Location: <%= meetup.location %></p>
+<p>Host: <%= meetup.host.username %></p>
+<p>Attendees: <% meetup.attendees.forEach((attendant) => { %>
+  <strong><%= attendant.username %></strong>
+<% }) %></p>
+<input type="hidden" name="lat" value="<%= meetup.lat %>">
+<input type="hidden" name="lng" value="<%= meetup.lng %>">
+<div id="map"></div>
