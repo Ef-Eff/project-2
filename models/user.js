@@ -1,15 +1,27 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const pics = ['6d822ca4-135a-4db6-8ace-de22495f885c.jpeg', 'a659a4fb-84c9-406d-876a-08dfc86cac70.gif', '87bc1865-be22-4abf-aef4-4624aa4963fc.jpeg'];
+const s3 = require('../lib/s3');
 
 const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
-  profilePic: { type: String, default: 'https://static.turbosquid.com/Preview/2014/08/01__19_40_10/Wood%20-%20by%20Lucas.png77300256-c8d9-40cf-917b-8494340e41f0Larger.jpg'},
+  profilePic: { type: String, default: pics[Math.floor(Math.random() * 3)] },
   location: { type: String },
   lat: { type: String },
   lng: { type: String }
 });
+
+userSchema.pre('remove', function removeImage(next) {
+  s3.deleteObject({ Key: this.profilePic }, next);
+});
+
+userSchema
+  .virtual('profilePicSRC')
+  .get(function getImageSRC() {
+    return `https://s3-eu-west-1.amazonaws.com/wdi-london-project-2/${this.profilePic}`;
+  });
 
 userSchema // Virtual so we do not store it in a database, it is a new parameter in the model
   .virtual('passwordConfirmation')

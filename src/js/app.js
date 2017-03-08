@@ -13,13 +13,20 @@ function initMap() {
   }
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat, lng},
-    zoom: 17
+    zoom: 15,
+    scrollwheel: false
   });
 
   var input = document.getElementById('input');
   var autocomplete = new google.maps.places.Autocomplete(input);
+  var marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29)
+  });
+  marker.setPosition({ lat, lng});
   autocomplete.bindTo('bounds', map);
   autocomplete.addListener('place_changed', function() {
+    marker.setVisible(false);
     var place = autocomplete.getPlace();
     var lat = place.geometry.location.lat();
     var lng = place.geometry.location.lng();
@@ -33,8 +40,10 @@ function initMap() {
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
-      map.setZoom(17);  // Why 17? Because it looks good.
+      map.setZoom(15);  // Why 17? Because it looks good.
     }
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
 
     $('[name=lat]').val(lat);
     $('[name=lng]').val(lng);

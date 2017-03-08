@@ -4,12 +4,13 @@ const sessions = require('../controllers/sessions');
 const meetups = require('../controllers/meetups');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
+const upload = require('../lib/upload');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/register')
   .get(registrations.new)
-  .post(registrations.create);
+  .post(upload.single('profilePic'), registrations.create);
 
 router.route('/login')
   .get(sessions.new)
@@ -19,8 +20,10 @@ router.route('/logout')
   .get(sessions.delete);
 
 router.route('/profile')
-  .get(secureRoute, users.profile);
-
+  .get(secureRoute, users.profile)
+  .post(upload.single('profilePic'), users.image)
+  .delete(users.delete);
+ 
 router.route('/users')
   .get(secureRoute, users.index);
 
@@ -29,7 +32,7 @@ router.route('/users/:id')
 
 router.route('/meetups')
   .get(secureRoute, meetups.index)
-  .post(meetups.create);
+  .post(upload.single('image'), meetups.create);
 
 router.route('/meetups/new')
   .get(secureRoute, meetups.new);

@@ -1,11 +1,15 @@
-<form method="POST" action="/register">
+<form method="POST" action="/register" enctype="multipart/form-data">
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email">
+  </div>
   <div>
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
   </div>
   <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+    <label for="profilePic">Profile Picture</label>
+    <input type="file" name="profilePic" id="profilePic">
   </div>
   <div>
     <label for="password">Password</label>

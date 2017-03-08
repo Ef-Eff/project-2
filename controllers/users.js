@@ -23,6 +23,21 @@ function profileRoute(req, res, next) {
   .catch(next);
 }
 
+function imageRoute(req, res, next) {
+
+  if(req.file) req.body.profilePic = req.file.key;
+
+  User
+    .findOne({ email: req.user.email })
+    .exec()
+    .then((user) => {
+      user.profilePic = req.body.profilePic;
+      return user.save();
+    })
+    .then(() => res.redirect('/profile'))
+    .catch(next);
+}
+
 function showRoute(req, res, next) {
 
   User
@@ -32,11 +47,23 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
+function deleteRoute(req, res, next) {
+
+  User
+    .findById(req.user.id)
+    .exec()
+    .then((user) => user.remove())
+    .then(() => req.session.regenerate(() => res.redirect('/')))
+    .catch(next);
+}
+
 
 
 
 module.exports = {
   index: indexRoute,
   show: showRoute,
-  profile: profileRoute
+  profile: profileRoute,
+  image: imageRoute,
+  delete: deleteRoute
 };

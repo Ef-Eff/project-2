@@ -1,6 +1,17 @@
 <h1>Yo what up profile page</h1>
 <p><%= locals.user.username %></p>
-<p><%= locals.user.email %></p>
+<p><%= locals.user.email %>.com</p>
+<form method="POST" action="/profile" enctype="multipart/form-data">
+  <div>
+    <label for="profilePic">Profile Picture</label>
+    <input type="file" name="profilePic" id="profilePic">
+  </div>
+  <button class="button">Post dat shit</button>
+</form>
+<form method="POST" action="/profile">
+  <input type="hidden" name="_method" value="DELETE">
+  <button class="btn btn-danger">Delete</button>
+</form>
 
 <h2>Hosting</h2>
 <% hosting.forEach((hosting) => { %>

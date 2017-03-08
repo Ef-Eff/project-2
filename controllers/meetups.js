@@ -3,7 +3,7 @@ const Meetup = require('../models/meetup');
 function indexRoute(req, res, next) {
 
   if(!req.query.limit) req.query.limit = 2;
-  
+
   Meetup
     .find()
     .limit(parseInt(req.query.limit))
@@ -31,11 +31,11 @@ function newRoute(req, res) {
 function createRoute(req, res, next) {
 
   req.body.host = req.user;
+  if(req.file) req.body.image = req.file.key;
 
   Meetup
     .create(req.body)
     .then((meetup) => {
-      console.log(meetup);
       res.redirect(`/meetups/${meetup.id}`);
     })
     .catch(next);
