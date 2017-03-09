@@ -8,6 +8,7 @@
   <form method="POST" action="/meetups/<%= meetup.id %>/attend">
     <button class="btn btn-success">Attend</button>
   </form>
+  <%= meetup.attendees %> <%= meetup.attendees.includes(locals.user) %>
 <% } %>
 <img src="<%= meetup.imageSRC %>" class="img-fluid">
 <p><%= meetup.name %></p>

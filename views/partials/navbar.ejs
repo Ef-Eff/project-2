@@ -1,20 +1,14 @@
 <% if(locals.user) { %>
   <div class="row titleContainer align-items-center">
     <div class="col">
-      <ul class="loggedNav">
-        <li><img src="<%= locals.user.profilePicSRC %>" style="height: 105px;border-radius: 100%;width: 120px;"></li>
-        <li><a href="/profile">ok</a></li>
-        <li>u bloody wot</li>
-        <li>u bloody wot</li>
-        <li>u bloody wot</li>
-      </ul>
+      <p class="loggedNav"><a href="/profile"><img src="<%= locals.user.profilePicSRC %>" class="profilePic"> <%= locals.user.username %></a> <a href="/meetups">Meetups</a> <a href="/users">Users</a> <a href="/logout">Logout</a> <a href="/meetups/new"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></p>
     </div>
   </div>
 <% } else { %>
   <div class="row titleContainer">
-    <div class="col">
+    <div class="col" id="padding">
       <a href="/"><h1>Gaming Meetups</h1>
-      <h5>Much better than poker.</h5></a>
+      <h5><%- locals.titles[Math.floor(Math.random() * 10)] %></h5></a>
     </div>
   </div>
-<% }%>
+<% } %>

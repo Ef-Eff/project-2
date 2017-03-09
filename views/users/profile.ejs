@@ -1,6 +1,4 @@
-<h1>Yo what up profile page</h1>
-<p><%= locals.user.username %></p>
-<p><%= locals.user.email %>.com</p>
+<h2>Profile Page</h2>
 <form method="POST" action="/profile" enctype="multipart/form-data">
   <div>
     <label for="profilePic">Profile Picture</label>
@@ -13,12 +11,12 @@
   <button class="btn btn-danger">Delete</button>
 </form>
 
-<h2>Hosting</h2>
+<h3>Hosting</h3>
 <% hosting.forEach((hosting) => { %>
   <p><a href="/meetups/<%= hosting.id %>" style="color: orange;"><%= hosting.name %></a></p>
 <% }) %>
 
-<h2>Attending</h2>
+<h3>Attending</h3>
 <% attending.forEach((attending) => { %>
-<p><a href="meetups/<%= attending.id %>" style="color: yellow;"><%= attending.name %></a></p>
+  <p><a href="meetups/<%= attending.id %>" style="color: yellow;"><%= attending.name %></a></p>
 <% }) %>
