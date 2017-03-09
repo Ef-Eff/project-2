@@ -1,23 +1,25 @@
-<form method="POST" action="/register" enctype="multipart/form-data">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+<div class="row" id="register">
+  <div class="col-8">
+    <form method="POST" action="/register" enctype="multipart/form-data">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+      <div>
+        <label for="passwordConfirmation">Password Confirmation</label>
+        <input type="password" name="passwordConfirmation" id="passwordConfirmation">
+      </div>
+      <div>
+        <label for="profilePic">Profile Picture</label>
+        <input type="file" name="profilePic" id="profilePic">
+      </div>
+      <button id="registerBtn">Register</button>
+    </form>
   </div>
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-  </div>
-  <div>
-    <label for="profilePic">Profile Picture</label>
-    <input type="file" name="profilePic" id="profilePic">
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-  </div>
-  <div>
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-  </div>
-  <button>Register</button>
-</form>
+</div>

@@ -1,14 +1,12 @@
-<h1>Login</h1>
-
 <form method="POST" action="/login">
-  <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+  <div class="row align-items-center loginForm">
+    <div class="col">
+      <div><label for="email">Email address</label></div>
+      <div><input type="text" name="email" id="email" placeholder="gamer@domain.com"required></div>
+      <div><label for="password">Password</label></div>
+      <div><input type="password" name="password" id="password" required></div>
+      <div><button id="loginBtn">Login</button></div>
+    </div>
   </div>
 
-  <button class="button">Login</button>
 </form>

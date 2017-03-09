@@ -15,10 +15,10 @@
 
 <h2>Hosting</h2>
 <% hosting.forEach((hosting) => { %>
-  <p><a href="/meetups/<%= hosting.id %>" style="color: black;"><%= hosting.name %></a></p>
+  <p><a href="/meetups/<%= hosting.id %>" style="color: orange;"><%= hosting.name %></a></p>
 <% }) %>
 
 <h2>Attending</h2>
 <% attending.forEach((attending) => { %>
-<p><a href="meetups/<%= attending.id %>" style="color: black;"><%= attending.name %></a></p>
+<p><a href="meetups/<%= attending.id %>" style="color: yellow;"><%= attending.name %></a></p>
 <% }) %>

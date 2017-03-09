@@ -5,15 +5,16 @@ const meetups = require('../controllers/meetups');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 const upload = require('../lib/upload');
+const isLogged = require('../lib/loggedRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/register')
-  .get(registrations.new)
+  .get(isLogged, registrations.new)
   .post(upload.single('profilePic'), registrations.create);
 
 router.route('/login')
-  .get(sessions.new)
+  .get(isLogged, sessions.new)
   .post(sessions.create);
 
 router.route('/logout')
@@ -23,7 +24,7 @@ router.route('/profile')
   .get(secureRoute, users.profile)
   .post(upload.single('profilePic'), users.image)
   .delete(users.delete);
- 
+
 router.route('/users')
   .get(secureRoute, users.index);
 

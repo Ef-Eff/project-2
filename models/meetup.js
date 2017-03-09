@@ -5,10 +5,11 @@ const meetupSchema = new mongoose.Schema({
   host: { type: mongoose.Schema.ObjectId, ref: 'User' },
   name: { type: String },
   date: { type: Date, default: Date.now },
-  image: { type: String, default: '87bc1865-be22-4abf-aef4-4624aa4963fc.jpeg' },
+  image: { type: String },
   description: { type: String },
   food: { type: String },
   requirements: { type: String },
+  maxUsers: { type: Number },
   attendees: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   location: { type: String },
   lat: { type: String },
@@ -17,14 +18,22 @@ const meetupSchema = new mongoose.Schema({
   timestamps: true
 });
 
-meetupSchema.pre('remove', function removeImage(next) {
-  s3.deleteObject({ Key: this.image }, next);
-});
+
 
 meetupSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
     return `https://s3-eu-west-1.amazonaws.com/wdi-london-project-2/${this.image}`;
   });
+
+meetupSchema.pre('remove', function removeImage(next) {
+
+  if(this.imageSRC) s3.deleteObject({ Key: this.image }, next);
+  next();
+});
+
+meetupSchema.methods.usersRemaining = function usersRemaining() {
+  return this.maxUsers - this.attendees.length;
+};
 
 module.exports = mongoose.model('Meetup', meetupSchema);

@@ -80,6 +80,8 @@ function attendRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((meetup) => {
+      if(meetup.attendees.length === meetup.maxUsers) res.badRequest(`/meetups/${meetup.id}`, 'Meetup is already full.');
+
       meetup.attendees.push(req.user);
 
       return meetup.save();

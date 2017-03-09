@@ -1,33 +1,20 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="/profile"><% if(locals.user) { %>
-    <img src="<%= locals.user.profilePicSRC %>" width="80" height="10" class="d-inline-block align-top" style="border-radius:100%;" alt="User">
-  <% }%></a>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/users">Users</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/meetups">Meetups</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/meetups/new">Create Meetup</a>
-      </li>
-    </ul>
+<% if(locals.user) { %>
+  <div class="row titleContainer align-items-center">
+    <div class="col">
+      <ul class="loggedNav">
+        <li><img src="<%= locals.user.profilePicSRC %>" style="height: 105px;border-radius: 100%;width: 120px;"></li>
+        <li><a href="/profile">ok</a></li>
+        <li>u bloody wot</li>
+        <li>u bloody wot</li>
+        <li>u bloody wot</li>
+      </ul>
+    </div>
   </div>
-</nav>
+<% } else { %>
+  <div class="row titleContainer">
+    <div class="col">
+      <a href="/"><h1>Gaming Meetups</h1>
+      <h5>Much better than poker.</h5></a>
+    </div>
+  </div>
+<% }%>

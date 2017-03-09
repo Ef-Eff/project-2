@@ -16,6 +16,7 @@
 <p>Food: <%= meetup.food %></p>
 <p>Location: <%= meetup.location %></p>
 <p>Host: <%= meetup.host.username %></p>
+<p>Users Remaining: <%= meetup.usersRemaining() %></p>
 <p>Attendees: <% meetup.attendees.forEach((attendant) => { %>
   <strong><%= attendant.username %></strong>
 <% }) %></p>

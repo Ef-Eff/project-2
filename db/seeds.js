@@ -29,6 +29,7 @@ User
       .create([{
         host: users[0],
         name: 'Broforced',
+        maxUsers: 12,
         description: 'A night for bro\'s that love to broforce it up, bring your bro on for this brotastic broforce session of bromageddon broportions.',
         image: '6d4f1c79-4216-4239-84f8-28c56692c5f8.png',
         requirements: 'PS4 Controller, Heart of a Bro (Girls allowed, just be a Bro at heart)',
@@ -41,6 +42,7 @@ User
         host: users[1],
         name: 'Journey Night',
         description: 'lets play journey',
+        maxUsers: 50,
         image: '6318e0f2-ff68-455f-8b9a-f90808e1faa2.jpeg',
         requirements: '£1 entry fee',
         food: 'Food can be bought at the venue',

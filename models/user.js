@@ -1,14 +1,27 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const pics = ['6d822ca4-135a-4db6-8ace-de22495f885c.jpeg', 'a659a4fb-84c9-406d-876a-08dfc86cac70.gif', '87bc1865-be22-4abf-aef4-4624aa4963fc.jpeg'];
+const pics = ['6d822ca4-135a-4db6-8ace-de22495f885c.jpeg', 'a659a4fb-84c9-406d-876a-08dfc86cac70.gif', 'df31f29b-ee7b-4c4f-9a70-6baec1c17a29.png'];
 const s3 = require('../lib/s3');
+function math() {
+  const maths = Math.floor(Math.random() * pics.length);
+  return pics[maths];
+}
+
+const pmSchema = new mongoose.Schema({
+  title: { type: String },
+  content: { type: String },
+  sentBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
+}, {
+  timestamps: true
+});
 
 const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
-  profilePic: { type: String, default: pics[Math.floor(Math.random() * 3)] },
+  profilePic: { type: String },
   location: { type: String },
+  messages: [ pmSchema ],
   lat: { type: String },
   lng: { type: String }
 });
@@ -42,6 +55,7 @@ userSchema.pre('save', function hashPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
+  this.profilePic = math();
   next();
 });
 
