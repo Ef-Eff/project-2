@@ -23,12 +23,14 @@ const meetupSchema = new mongoose.Schema({
 meetupSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
+    if (!this.image) return 'https://s3-eu-west-1.amazonaws.com/wdi-london-project-2/StockMeetupImg.jpg';
     return `https://s3-eu-west-1.amazonaws.com/wdi-london-project-2/${this.image}`;
   });
 
 meetupSchema.pre('remove', function removeImage(next) {
 
   if(this.imageSRC) s3.deleteObject({ Key: this.image }, next);
+  if(this.imageSRC === 'https://s3-eu-west-1.amazonaws.com/wdi-london-project-2/StockMeetupImg.jpg') next();
   next();
 });
 

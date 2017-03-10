@@ -7,27 +7,19 @@ function math() {
   return pics[maths];
 }
 
-const pmSchema = new mongoose.Schema({
-  title: { type: String },
-  content: { type: String },
-  sentBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
-}, {
-  timestamps: true
-});
-
 const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
   profilePic: { type: String },
   location: { type: String },
-  messages: [ pmSchema ],
   lat: { type: String },
   lng: { type: String }
 });
 
 userSchema.pre('remove', function removeImage(next) {
-  s3.deleteObject({ Key: this.profilePic }, next);
+  if(!pics.includes(this.profilePic)) s3.deleteObject({ Key: this.profilePic }, next);
+  next();
 });
 
 userSchema
@@ -55,7 +47,8 @@ userSchema.pre('save', function hashPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
-  this.profilePic = math();
+  if(!this.profilePic) this.profilePic = math();
+  console.log(pics.includes(this.profilePic));
   next();
 });
 

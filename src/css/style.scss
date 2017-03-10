@@ -100,8 +100,10 @@ h1, h2, h3, h4, h5 {
     font-size: 4vh;
   }
 }
-
-#registerBtn, #loginBtn, #deleteBtn {
+label {
+  font-family: $font;
+}
+#registerBtn, #loginBtn, #deleteBtn, #newMeetup, .button {
   text-align: center;
   font-family: $font;
   background: none;
@@ -118,15 +120,20 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+#newMeetup {
+  margin-bottom: 50px;
+}
+
 .loggedNav {
   border-bottom: 3px solid white;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(40, 40, 40, 0.1), rgba(0, 0, 0, 0.7));
   font-family: $font;
   a {
     padding: 0 2vw;
+    font-size: 20px;
     &:hover {
       color: yellow;
-      font-size: 17px;
+      font-size: 23px;
     }
   }
   .profilePic {
@@ -172,4 +179,13 @@ h1, h2, h3, h4, h5 {
   &:hover {
     color: red;
   }
+}
+
+.meetupImg {
+  border-radius: 3px;
+
+}
+
+.meetupPage {
+  margin-top: 20px;
 }

@@ -11,15 +11,19 @@
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" name="description" id="description" class="form-control" required>
+    <textarea name="description" id="description" class="form-control" maxlength="255" placeholder="Totally awesome event where we do some thing and have fun hhehehah" required></textarea>
   </div>
   <div class="form-group">
     <label for="food">Food</label>
-    <input type="text" name="food" id="food" class="form-control">
+    <input type="text" name="food" id="food" class="form-control" placeholder="Bring your own? Takeaway? Served on the day?">
   </div>
   <div class="form-group">
     <label for="requirements">Requirements</label>
-    <input type="text" name="requirements" id="requirements" class="form-control">
+    <input type="text" name="requirements" id="requirements" class="form-control" placeholder="If nothing, just type that.">
+  </div>
+  <div class="form-group">
+    <label for="maxUsers">Maximum Attendees</label>
+    <input type="number" name="maxUsers" id="maxUsers" class="form-control">
   </div>
   <div class="form-group">
     <label for="input">Location</label>
@@ -28,5 +32,5 @@
   <div id="map"></div>
   <input type="hidden" name="lat" value="">
   <input type="hidden" name="lng" value="">
-  <button class="btn btn-primary">Create</button>
+  <button id="newMeetup">Create</button>
 </form>

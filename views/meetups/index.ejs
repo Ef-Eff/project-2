@@ -1,7 +1,7 @@
 <h1 id="meetup">Meetups</h1>
 <div class="row">
   <% meetups.forEach((meetup) => { %>
-    <div class="col-md-6">
+    <div class="col-md-6 meetupPage">
       <h4><%= meetup.name %></h4>
       <a href="/meetups/<%= meetup.id %>"><image src="<%= meetup.imageSRC %>" class="img-fluid meetupImg"></a>
     </div>

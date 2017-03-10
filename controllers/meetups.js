@@ -2,7 +2,7 @@ const Meetup = require('../models/meetup');
 
 function indexRoute(req, res, next) {
 
-  if(!req.query.limit) req.query.limit = 2;
+  if(!req.query.limit) req.query.limit = 10;
 
   Meetup
     .find()

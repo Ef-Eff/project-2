@@ -1,14 +1,16 @@
+<% if(meetup.host) { %>
 <% if(locals.user.id === meetup.host.id) { %>
   <a class="btn btn-primary" href="/meetups/<%= meetup.id %>/edit">Edit</a>
   <form method="POST" action="/meetups/<%= meetup.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <button class="btn btn-danger">Delete</button>
+    <button class="button">Delete</button>
   </form>
 <% } else { %>
   <form method="POST" action="/meetups/<%= meetup.id %>/attend">
-    <button class="btn btn-success">Attend</button>
+    <button class="button">Attend</button>
   </form>
   <%= meetup.attendees %> <%= meetup.attendees.includes(locals.user) %>
+<% } %>
 <% } %>
 <img src="<%= meetup.imageSRC %>" class="img-fluid">
 <p><%= meetup.name %></p>
@@ -16,7 +18,7 @@
 <p>Requirements: <%= meetup.requirements %></p>
 <p>Food: <%= meetup.food %></p>
 <p>Location: <%= meetup.location %></p>
-<p>Host: <%= meetup.host.username %></p>
+<% if (meetup.host) { %> <p>Host: <%= meetup.host.username %></p> <% } %>
 <p>Users Remaining: <%= meetup.usersRemaining() %></p>
 <p>Attendees: <% meetup.attendees.forEach((attendant) => { %>
   <strong><%= attendant.username %></strong>
