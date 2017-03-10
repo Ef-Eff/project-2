@@ -1,6 +1,6 @@
 <% if(meetup.host) { %>
 <% if(locals.user.id === meetup.host.id) { %>
-  <a class="btn btn-primary" href="/meetups/<%= meetup.id %>/edit">Edit</a>
+  <a class="editBtn" href="/meetups/<%= meetup.id %>/edit">Edit</a>
   <form method="POST" action="/meetups/<%= meetup.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <button class="button">Delete</button>

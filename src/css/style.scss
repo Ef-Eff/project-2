@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5 {
 label {
   font-family: $font;
 }
-#registerBtn, #loginBtn, #deleteBtn, #newMeetup, .button {
+#registerBtn, #loginBtn, #deleteBtn, #newMeetup, .button, .editBtn {
   text-align: center;
   font-family: $font;
   background: none;
@@ -183,9 +183,15 @@ label {
 
 .meetupImg {
   border-radius: 3px;
-
 }
 
 .meetupPage {
   margin-top: 20px;
+}
+
+#loginPg, #registerPg {
+  font-size: 5vh;
+  &:hover {
+    font-size: calc(5vh + 3px);
+  }
 }
