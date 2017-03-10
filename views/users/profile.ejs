@@ -1,22 +1,38 @@
 <h2>Profile Page</h2>
-<form method="POST" action="/profile" enctype="multipart/form-data">
-  <div>
-    <label for="profilePic">Profile Picture</label>
-    <input type="file" name="profilePic" id="profilePic">
+<div class="row profileRow">
+  <div class="col-6"><h3>Hosting</h3></div>
+  <div class="col-6"><h3>Attending</h3></div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <% hosting.forEach((hosting) => { %>
+      <form class="row align-items-center" method="GET" action="meetups/<%= hosting.id %>">
+        <div class="col">
+          <button class="profileHost"><img src="<%= hosting.imageSRC %>" class="profileImg"><%= hosting.name %></button>
+        </div>
+      </form>
+      <div class="row align-items-center profileEdit">
+        <form class="col" method="POST" action="meetups/<%= hosting.id %>">
+        <a href="meetups/<%= hosting.id %>/edit" class="hostEdit">Edit</a>
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="hostDel">DELETE</button>
+        </form>
+      </div>
+    <% }) %>
   </div>
-  <button class="button">Post dat shit</button>
+  <div class="col-6">
+    <% attending.forEach((attending) => { %>
+      <form class="row align-items-center" method="GET" action="meetups/<%= attending.id %>">
+        <div class="col">
+          <button class="profileBtns"><img src="<%= attending.imageSRC %>" class="profileImg"><%= attending.name %></button>
+        </div>
+      </form>
+    <% }) %>
+  </div>
+</div>
+<form class="row" method="POST" action="/profile">
+  <div class="col">
+    <input type="hidden" name="_method" value="DELETE">
+    <button id="deleteBtn">DELETE ACCOUNT</button>
+  </div>
 </form>
-<form method="POST" action="/profile">
-  <input type="hidden" name="_method" value="DELETE">
-  <button class="btn btn-danger">Delete</button>
-</form>
-
-<h3>Hosting</h3>
-<% hosting.forEach((hosting) => { %>
-  <p><a href="/meetups/<%= hosting.id %>" style="color: orange;"><%= hosting.name %></a></p>
-<% }) %>
-
-<h3>Attending</h3>
-<% attending.forEach((attending) => { %>
-  <p><a href="meetups/<%= attending.id %>" style="color: yellow;"><%= attending.name %></a></p>
-<% }) %>
