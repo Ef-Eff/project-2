@@ -14,6 +14,10 @@ body {
   color: white;
 }
 
+main {
+  padding-bottom: 70px;
+}
+
 a {
   color: white;
   &:hover {
@@ -83,6 +87,7 @@ h1, h2, h3, h4, h5 {
 #map {
   height: 300px;
   border: 1px solid white;
+  margin-top: 30px;
 }
 
 .flash {
@@ -100,9 +105,11 @@ h1, h2, h3, h4, h5 {
     font-size: 4vh;
   }
 }
+
 label {
   font-family: $font;
 }
+
 #registerBtn, #loginBtn, #deleteBtn, #newMeetup, .button, .editBtn {
   text-align: center;
   font-family: $font;
@@ -193,5 +200,17 @@ label {
   font-size: 5vh;
   &:hover {
     font-size: calc(5vh + 3px);
+  }
+}
+
+.meetup-show {
+
+}
+
+.meetup-img {
+  text-align: center;
+  img {
+    max-height: 500px;
+    margin-bottom: 20px;
   }
 }

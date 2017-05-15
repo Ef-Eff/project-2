@@ -1,28 +1,31 @@
-<% if(meetup.host) { %>
-<% if(locals.user.id === meetup.host.id) { %>
-  <a class="editBtn" href="/meetups/<%= meetup.id %>/edit">Edit</a>
-  <form method="POST" action="/meetups/<%= meetup.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="button">Delete</button>
-  </form>
-<% } else { %>
-  <form method="POST" action="/meetups/<%= meetup.id %>/attend">
-    <button class="button">Attend</button>
-  </form>
-  <%= meetup.attendees %> <%= meetup.attendees.includes(locals.user) %>
-<% } %>
-<% } %>
-<img src="<%= meetup.imageSRC %>" class="img-fluid">
-<p><%= meetup.name %></p>
-<p>Description: <%= meetup.description %></p>
-<p>Requirements: <%= meetup.requirements %></p>
-<p>Food: <%= meetup.food %></p>
-<p>Location: <%= meetup.location %></p>
-<% if (meetup.host) { %> <p>Host: <%= meetup.host.username %></p> <% } %>
-<p>Users Remaining: <%= meetup.usersRemaining() %></p>
-<p>Attendees: <% meetup.attendees.forEach((attendant) => { %>
-  <strong><%= attendant.username %></strong>
-<% }) %></p>
-<input type="hidden" name="lat" value="<%= meetup.lat %>">
-<input type="hidden" name="lng" value="<%= meetup.lng %>">
-<div id="map"></div>
+<div class="meetup-show">
+  <div class="col meetup-img">
+    <img src="<%= meetup.imageSRC %>" class="img-fluid">
+  </div>
+  <h2><%= meetup.name %></h2>
+  <p><strong>Description</strong>: <%= meetup.description %></p>
+  <p><strong>Requirements</strong>: <%= meetup.requirements %></p>
+  <p><strong>Food</strong>: <%= meetup.food %></p>
+  <p><strong>Location</strong>: <%= meetup.location %></p>
+  <% if (meetup.host) { %> <p>Host: <%= meetup.host.username %></p> <% } %>
+  <p><strong>Users Remaining</strong>: <%= meetup.usersRemaining() %></p>
+  <p><strong>Attendees</strong>: <% meetup.attendees.forEach((attendant) => { %>
+    <strong><%= attendant.username %></strong>
+  <% }) %></p>
+  <input type="hidden" name="lat" value="<%= meetup.lat %>">
+  <input type="hidden" name="lng" value="<%= meetup.lng %>">
+  <% if(meetup.host) { %>
+    <% if(locals.user.id === meetup.host.id) { %>
+      <a class="editBtn" href="/meetups/<%= meetup.id %>/edit">Edit</a>
+      <form method="POST" action="/meetups/<%= meetup.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="button">Delete</button>
+      </form>
+    <% } else { %>
+      <form method="POST" action="/meetups/<%= meetup.id %>/attend">
+        <button class="button">Attend</button>
+      </form>
+    <% } %>
+  <% } %>
+  <div id="map"></div>
+</div>
